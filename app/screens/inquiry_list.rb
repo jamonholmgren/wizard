@@ -28,31 +28,30 @@ class InquiryList < PM::TableScreen
     open_modal HelpScreen.new(nav_bar: true)
   end
 
-  def open_inquiry(args)
-    open InquiryDetail.new(inquiry_id: args[:inquiry_id])
+
+  def numberOfSectionsInTableView(tableView)
+    1
   end
 
 
   def table_data
     puts 'in table_data'
     [{
-        cells: (0..200).map do |n|
-          {
-              cell_identifier: EntryCell::ID,
-              cell_class: EntryCell,
-              height: 80 ,
-          #    background_color: UIColor.grayColor,  # says to include this in styles yet it is in documentation valid
-              styles: {         #still tells me to put this is styles hash
-                  name: "Inquiry with a long name #{n}",
-                  inquiry_date: '6/18/2014 9:30PM',
-                  arrival: 'Aug 8, 2015',
-                  departure: 'Aug 22, 2015',
-                  nights: '14',
-                  availability: 'Available',
-                  arrow: 'arrow-available.png'
-              }
-          }
-        end
+         cells: (1..100).to_a.collect {|c|
+           {
+               #title: "Cell at row #{c}",
+               cell_identifier: 'OtherID',
+               cell_class: EntryCell,
+               height: 90,
+               styles: {         #still tells me to put this is styles hash
+                                 name: "Inquiry with a long name #{c}",
+                                 inquiry_date: '6/18/2014 9:30PM',
+                                 first_date: 'Aug 8, 2015',
+                                 last_date: 'Aug 15, 2015',
+                                 arrow: 'arrow-available.png'
+               }
+           }
+         }
      }]
   end
 

@@ -1,27 +1,27 @@
-
-class EntryCell < PM::TableViewCell
+class OtherCell < UITableViewCell
   include PM::TableViewCellModule
   attr_accessor :title, :view, :layout, :name
-  ID = 'EntryCellID'
+  ID = 'OtherCellID'
 
   def initWithStyle(style, reuseIdentifier:identifier)
     super
-    #puts "In EntryCell"
-    @layout = EntryCellLayout.new
+    puts "In OtherCell"
+    @layout = OtherCellLayout.new
     self
   end
+
   def setup(data_cell, table_screen)
     super
-    puts "in EntryCell Setup"
+    puts "in OtherCell Setup"
     self.view = @layout.view
     @layout.name.text = data_cell[:styles][:name]
     @layout.inquiry_date.text = data_cell[:styles][:inquiry_date]
     @layout.last_date.text = data_cell[:styles][:last_date]
     @layout.first_date.text = data_cell[:styles][:first_date]
 
-    self.contentView.addSubview @layout.view
-    self.setNeedsLayout
-    self.layoutIfNeeded
+     self.contentView.addSubview @layout.view
+     self.setNeedsLayout
+     self.layoutIfNeeded
     self
   end
   #self.accessoryImage.setImage(UIImage.imageNamed("arrow-#{color}.png"))
@@ -36,4 +36,3 @@ class EntryCell < PM::TableViewCell
     @layout.add_constraints(self)
   end
 end
-

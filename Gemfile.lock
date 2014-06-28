@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/clearsightstudio/ProMotion.git
-  revision: 1767a917323029c44d04853ed076bb54b5c8122c
+  revision: d52ed6a243f713dca6f2a0eb0d2db345d0114995
   branch: pm2
   specs:
     ProMotion (2.0.0)
@@ -12,12 +12,14 @@ GEM
     dbt (1.1.5)
     methadone (1.4.0)
       bundler
-    motion-kit (0.10.7)
+    motion-kit (0.10.8)
       dbt (~> 1.1.5)
     motion-kit-events (0.2.1)
       dbt
       motion-kit
+    motion-layout (0.0.2)
     rake (10.3.2)
+    sugarcube (1.6.3)
 
 PLATFORMS
   ruby
@@ -26,4 +28,6 @@ DEPENDENCIES
   ProMotion!
   motion-kit
   motion-kit-events
+  motion-layout
   rake
+  sugarcube
