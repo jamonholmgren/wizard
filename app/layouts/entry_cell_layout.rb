@@ -66,6 +66,13 @@ class EntryCellLayout < MK::Layout
 
   def add_constraints(cell)
     context(cell.contentView) do
+      constraints(:entry_cell) do
+        top.equals(:superview)
+        bottom.equals(:superview)
+        left.equals(:superview)
+        right.equals(:superview)
+      end
+
       constraints(:inquiry_date) do
         bottom.equals(view).minus(2)
         left.equals(:name, :left)

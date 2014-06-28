@@ -4,27 +4,35 @@ class EntryCell < PM::TableViewCell
   attr_accessor :title, :view, :layout, :name
   ID = 'EntryCellID'
 
-  def initWithStyle(style, reuseIdentifier:identifier)
-    super
-    #puts "In EntryCell"
-    @layout = EntryCellLayout.new
-    self
+  def layout
+    @layout ||= EntryCellLayout.new
   end
+
   def setup(data_cell, table_screen)
     super
-    puts "in EntryCell Setup"
-    self.view = @layout.view
-    @layout.name.text = data_cell[:styles][:name]
-    @layout.inquiry_date.text = data_cell[:styles][:inquiry_date]
-    @layout.last_date.text = data_cell[:styles][:last_date]
-    @layout.first_date.text = data_cell[:styles][:first_date]
-
-    self.contentView.addSubview @layout.view
+    $v = self
+    self.view = layout.view
+    self.contentView.addSubview layout.view
     self.setNeedsLayout
     self.layoutIfNeeded
     self
   end
-  #self.accessoryImage.setImage(UIImage.imageNamed("arrow-#{color}.png"))
+
+  def name=(new_name)
+    layout.name.text = new_name
+  end
+
+  def inquiry_date=(new_date)
+    layout.inquiry_date.text = new_date
+  end
+
+  def last_date=(new_date)
+    layout.last_date.text = new_date
+  end
+
+  def first_date=(new_date)
+    layout.first_date.text = new_date
+  end
 
   def layoutSubviews
     super
